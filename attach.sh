@@ -1,4 +1,5 @@
 #!/bin/sh
 NODE=$1
-NODE=${NODE:-"ethereum-node1"}
+NODE=${NODE:-"node1"}
+CONTAINER_NAME="ethereum-$NODE"
 docker exec -ti "$NODE" geth attach
