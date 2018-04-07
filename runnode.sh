@@ -30,7 +30,7 @@ if [ ! -d $DATA_ROOT/keystore ]; then
 fi
 echo "Running new container $CONTAINER_NAME..."
 docker run $DETACH_FLAG --name $CONTAINER_NAME \
-    --network ethereum \
+    -P \
     -v $DATA_ROOT:/root/.ethereum \
     -v $DATA_HASH:/root/.ethash \
     -v $(pwd)/genesis.json:/opt/genesis.json \

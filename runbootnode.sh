@@ -19,6 +19,7 @@ fi
 [ ! "$(docker network ls | grep ethereum)" ] && docker network create ethereum
 [[ -z $BOOTNODE_SERVICE ]] && BOOTNODE_SERVICE="127.0.0.1"
 docker run -d --name ethereum-bootnode \
+    -P \
     -p 30301:30301 \
     -p 30301:30301/udp \
     -v $DATA_ROOT/.bootnode:/opt/bootnode \
