@@ -6,6 +6,7 @@ docker stop ethereum-bootnode
 docker rm ethereum-bootnode
 NODE_NAME=$1
 NODE_NAME=${NODE_NAME:-"boot1"}
+CONTAINER_NAME="ethereum-$NODE_NAME"
 IMGNAME="ethereum/client-go:alltools-v1.7.3"
 DATA_ROOT=${DATA_ROOT:-$(pwd)}
 # generate bootnode key if needed
@@ -20,7 +21,7 @@ fi
 # creates ethereum network
 #[ ! "$(docker network ls | grep ethereum)" ] && docker network create ethereum
 [[ -z $BOOTNODE_SERVICE ]] && BOOTNODE_SERVICE="127.0.0.1"
-docker run -d --name $NODE_NAME \
+docker run -d --name $CONTAINER_NAME \
     -P \
     -p 30301:30301 \
     -p 30301:30301/udp \
