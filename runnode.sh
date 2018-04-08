@@ -15,7 +15,7 @@ if [[ ! -z $RPC_PORT ]]; then
     RPC_ARG='--rpc --rpcaddr=0.0.0.0 --rpcapi=db,eth,net,web3,personal --rpccorsdomain "*"'
     RPC_PORTMAP="-p $RPC_PORT:8545"
 fi
-BOOTNODE_URL=${BOOTNODE_URL:-$(./getbootnodeurl.sh)}
+#BOOTNODE_URL=${BOOTNODE_URL:-$(./getbootnodeurl.sh)}
 if [ ! -f $(pwd)/genesis.json ]; then
     echo "No genesis.json file found, please run 'genesis.sh'. Aborting."
     exit
@@ -35,4 +35,5 @@ docker run $DETACH_FLAG --name $CONTAINER_NAME \
     -v $DATA_HASH:/root/.ethash \
     -v $(pwd)/genesis.json:/opt/genesis.json \
     $RPC_PORTMAP \
-    $IMGNAME --bootnodes=$BOOTNODE_URL $RPC_ARG --verbosity=4 ${@:2}
+    $IMGNAME $RPC_ARG --verbosity=4 ${@:2}
+#    $IMGNAME --bootnodes=$BOOTNODE_URL $RPC_ARG --verbosity=4 ${@:2}
