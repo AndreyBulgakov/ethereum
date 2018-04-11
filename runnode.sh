@@ -35,5 +35,5 @@ docker run $DETACH_FLAG --name $CONTAINER_NAME \
     -v $DATA_HASH:/root/.ethash \
     -v $(pwd)/genesis.json:/opt/genesis.json \
     $RPC_PORTMAP \
-    $IMGNAME $RPC_ARG --verbosity=4 ${@:2}
+    $IMGNAME $RPC_ARG --nodiscover --verbosity=4 ${@:2}
 #    $IMGNAME --bootnodes=$BOOTNODE_URL $RPC_ARG --verbosity=4 ${@:2}
